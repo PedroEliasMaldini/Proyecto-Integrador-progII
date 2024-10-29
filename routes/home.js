@@ -3,5 +3,7 @@ const router = express.Router();
 const homeController = require('../controllers/homeController')
 
 router.get('/', homeController.index);
+router.get('/detalle/:id', homeController.detalle);
+router.get('/marca/:marca', homeController.filtrado);
 
 module.exports = router;
