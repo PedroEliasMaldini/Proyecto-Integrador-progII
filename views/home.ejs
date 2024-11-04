@@ -26,7 +26,7 @@
                     <img src="/images/foto.jpg" class="card-img-top" alt="Imagen de <%= results[i].name %>">
                     <div class="card-body">
                       <h5 class="card-title"><%= results[i].name %></h5>
-                      <p class="card-text">Aquí puedes agregar una breve descripción o más detalles si lo deseas.</p>
+                      <p class="card-text"><%= results[i].description %></p>
                       <a href="/home/marca/<%= results[i].brand %>" class="btn btn-primary">Marca</a>
                       <a href="/home/detalle/<%= results[i].id %>" class="btn btn-secondary">Detalle</a>
                     </div>
