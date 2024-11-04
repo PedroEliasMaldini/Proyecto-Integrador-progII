@@ -29,6 +29,9 @@ let homeController = {
       })
       .catch((err) => console.log(err));
   },
+  create: (req, res) =>{
+    return res.render('CreateProduct')
+  }
 };
 
 module.exports = homeController;
