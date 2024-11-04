@@ -1,2 +1,9 @@
 const db = require('../database/models');
-const bcryptjs = require('bcryptjs');
+const userController = {
+    register: function (req, res) {
+        res.render('createUser')
+    }
+        
+    };
+
+module.exports = userController
