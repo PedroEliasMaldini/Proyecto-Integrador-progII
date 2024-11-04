@@ -1,4 +1,3 @@
-
 CREATE SCHEMA IF NOT EXISTS car_inventory;
 USE car_inventory;
 
@@ -11,7 +10,11 @@ CREATE TABLE cars (
     color VARCHAR(50),
     gama ENUM('Baja', 'Media', 'Alta', 'Muy Alta', 'Super Lujo') NOT NULL,
     price DECIMAL(15, 2),
-    image VARCHAR(255)
+    image VARCHAR(255),
+    
+createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+deletedAt TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Insertando los datos
@@ -24,3 +27,16 @@ INSERT INTO cars (name, description, brand, model, color, gama, price, image) VA
 ('Mercedes-Maybach S680', 'Sedán de lujo con confort extremo', 'Mercedes-Benz', 'Maybach S680', 'Negro', 'Alta', 250000.00, 'https://via.placeholder.com/400x200?text=Mercedes+Maybach+S680'),
 ('Porsche 918 Spyder', 'Hiperdeportivo híbrido de edición limitada', 'Porsche', '918 Spyder', 'Plateado', 'Super Lujo', 845000.00, 'https://via.placeholder.com/400x200?text=Porsche+918+Spyder'),
 ('Porsche Carrera GT', 'Superdeportivo raro y de alta revalorización', 'Porsche', 'Carrera GT', 'Amarillo', 'Super Lujo', 1200000.00, 'https://via.placeholder.com/400x200?text=Porsche+Carrera+GT');
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    username VARCHAR(100),
+    contrasenia VARCHAR(100),
+    gmail  VARCHAR(100) NOT NULL UNIQUE,
+    
+createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+deletedAt TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP
+);
