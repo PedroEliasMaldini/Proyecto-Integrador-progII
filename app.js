@@ -3,11 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const homeRouter = require('./routes/home')
+
 
 var app = express();
 
@@ -21,16 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-  secret: "myApp",
-  resave: false, // valor booleano en lugar de una cadena
-  saveUninitialized: true
-}));
-
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/home', homeRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
