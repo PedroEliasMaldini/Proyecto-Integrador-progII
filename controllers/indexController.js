@@ -1,8 +1,9 @@
+const { Association } = require("sequelize");
 const db = require("../database/models");
 
 const indexController = {
   index: function (req, res) {
-    db.Producto.findAll()
+    db.Producto.findAll({ include: [{ association: "usuario" }] })
       .then((result) => {
         return res.render("index", { result: result });
         return res.send(result); // para ver si funciona

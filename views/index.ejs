@@ -45,10 +45,11 @@
 									<h2>
 										<%= result[i].nombre_producto %>
 									</h2>
+								<p>Vendedor: <%= result[i].usuario.username %></p>
 									<p>valor: <%= new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(result[i].precio) %></p>
 								</p>
 
-									<p>Usuario: ver el for que no me acuerdo</p>
+									
 								</article>
 							</a>
 						</section>
