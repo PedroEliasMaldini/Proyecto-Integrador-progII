@@ -20,11 +20,18 @@
     <%- include('./partials/header') %>
 
     <main>
-        <h1>Login Exitoso</h1>
-        <p>Gracias por Loguearte</p>
-        <p>Bienvenido: <%= result.username %></p>
-        <p><a href="/users/login">Haz clic aquí para iniciar sesión</a></p>
-    </main>
+        <main>
+            <% if (result && result.username) { %>
+                <h1>Login Exitoso</h1>
+                <p>Gracias por Loguearte</p>
+                <p>Bienvenido: <%= result.username %></p>
+            <% } else { %>
+                <h1>Error de Login</h1>
+                <p>No hay login con esos inputs</p>
+            <% } %>
+            <p><a href="/users/login">Haz clic aquí para iniciar sesión</a></p>
+        </main>
+        
     
     <%- include('./partials/footer') %>
 
