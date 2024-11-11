@@ -24,7 +24,8 @@ const productoController = {
   },
 
   add: function (req, res) {
-    return res.render("product-add");},
+    return res.render("product-add");
+},
 };
 
 module.exports = productoController;
