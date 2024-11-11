@@ -26,6 +26,17 @@ const productoController = {
   add: function (req, res) {
     return res.render("product-add");
 },
-};
+addeado: function (req, res) {
+  let form = req.body
+  db.Producto.create(form)
+    .then((result) => {
+      return res.redirect('/');
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).send("Error al registrar el usuario");
+    });
+  
+}}
 
 module.exports = productoController;

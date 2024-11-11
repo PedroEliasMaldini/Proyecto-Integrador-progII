@@ -28,18 +28,31 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="/agregar-producto" method="post">
-				<label for="imagen">Imagen (Nombre del archivo):</label>
-				<input type="text" id="imagen" name="imagen" required><br><br>
-			  
-				<label for="nombre_producto">Nombre del Producto:</label>
-				<input type="text" id="nombre_producto" name="nombre_producto" required><br><br>
-			  
-				<label for="descripcion">Descripción:</label>
-				<textarea id="descripcion" name="descripcion" required></textarea><br><br>
-			  
+			<form action="/producto/add" method="post">
+				<label>Usuario ID:</label>
+				<input type="number" id="usuarioId" name="usuarioId" required>
+				<br><br>
+			
+				<label>Imagen (Nombre del archivo):</label>
+				<input type="text" id="imagen" name="imagen" required>
+				<br><br>
+			
+				<label>Nombre del Producto:</label>
+				<input type="text" id="nombre_producto" name="nombreProducto" required>
+				<br><br>
+			
+				<label>Descripción:</label>
+				<textarea id="descripcion" name="descripcion" required></textarea>
+				<br><br>
+			
+				<label>Precio:</label>
+				<input type="number" id="precio" name="precio" required min="0">
+				<br><br>
+			
 				<button type="submit">Agregar Producto</button>
-			  </form>
+			</form>
+			
+			
 			  
 
 
