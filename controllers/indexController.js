@@ -14,7 +14,11 @@ const indexController = {
 
   detalle: function (req, res) {
     let id = req.params.id;
-    let filtro = { where: [{ id: id }] };
+    let filtro = {
+      where: [{ id: id }],
+      order: [['createdAt', 'DESC']]
+    };
+    
 
     db.Producto.findOne(filtro)
       .then((result) => {
