@@ -2,8 +2,37 @@ const db = require("../database/models");
 const bcryptjs = require('bcryptjs');
 
 const usersController = {
-  login: function (req, res) {
+  getlogin: function (req, res) {
     return res.render("login");
+  },
+
+  postlogin: function (req, res) {
+    let form = req.body;
+  
+    let filtro = {
+      where: {
+        email: form.email
+      }
+    };
+  
+    db.Usuario.findOne(filtro)
+      .then((result) => {
+        if (result != undefined) {
+          let validarClave = bcryptjs.compareSync(form.contrasena, result.contrasena);
+  
+          if (validarClave) {
+            return res.redirect("/");
+          } else {
+            return res.send("Clave incorrecta");
+          }
+        } else {
+          // falta
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).send("Error al iniciar sesión");
+      });
   },
 
   getRegister: function (req, res) {
@@ -11,20 +40,19 @@ const usersController = {
   },
 
   postRegister: function (req, res) {
-
-    let form = req.body
+    let form = req.body;
     let pass = bcryptjs.hashSync(form.contrasena, 10);
     form.contrasena = pass;
 
     db.Usuario.create(form)
-    .then((result) => {
-      return res.render('confirmacion-registro')
-    }).catch((err) => {
-      return console.log(err);
-      
-    });
-   
-  },
+      .then((result) => {
+        return res.render('confirmacion-registro');
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).send("Error al registrar el usuario");
+      });
+  }
 };
 
 module.exports = usersController;
