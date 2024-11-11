@@ -18,7 +18,7 @@ const usersController = {
 
     db.Usuario.create(form)
     .then((result) => {
-      return res.redirect('/users/login')
+      return res.render('confirmacion-registro')
     }).catch((err) => {
       return console.log(err);
       
