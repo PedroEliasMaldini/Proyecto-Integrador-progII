@@ -1,48 +1,55 @@
-// models/Usuario.js
-module.exports = (sequelize, DataTypes) => {
-  const Usuario = sequelize.define(
-    "Usuario",
-    {
-      username: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        unique: true,
-      },
-      email: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        unique: true,
-      },
-      contrasena: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-      },
-      createdAt: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-        onUpdate: DataTypes.NOW,
-      },
-      deletedAt: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
-    },
-    {
-      tableName: "usuarios",
-      timestamps: true,
-      paranoid: true,
-    }
-  );
+module.exports = function (sequelize, DataTypes) {
+  let alias = "Usuario"; // alias para llamarlo desde el controlador
 
-  Usuario.associate = (models) => {
+  let cols = {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
+    username: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      unique: true,
+    },
+    email: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      unique: true,
+    },
+    contrasena: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+      onUpdate: DataTypes.NOW,
+    },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+  };
+
+  let config = {
+    tableName: "usuarios", // nombre de la tabla
+    timestamps: true,
+    paranoid: true,
+    underscored: false,
+  };
+
+  const Usuario = sequelize.define(alias, cols, config);
+
+  Usuario.associate = function (models) {
     // Relación: Un usuario puede tener muchos productos
     Usuario.hasMany(models.Producto, {
-      foreignKey: "usuario_id",
-      as: "producto",
+      as: "productos", // alias de la relación
+      foreignKey: "usuarioId",
     });
   };
 

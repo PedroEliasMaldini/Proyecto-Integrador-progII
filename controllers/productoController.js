@@ -8,7 +8,7 @@ const productoController = {
     let qs = req.query.search;
     let filtro = {
       where: {
-        nombre_producto: {
+        nombreProducto: {
           [op.like]: `%${qs}%` 
         }
       }
