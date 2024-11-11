@@ -3,12 +3,15 @@ const db = require("../database/models");
 
 const indexController = {
   index: function (req, res) {
-    db.Producto.findAll({ include: [{ association: "usuario" }] })
+    let filtro = {
+      order: [['createdAt', 'DESC']],
+      include: [{ association: "usuario" }]
+    };
+    db.Producto.findAll(filtro)
       .then((result) => {
         return res.render("index", { result: result });
         return res.send(result); // para ver si funciona
       })
-
       .catch((err) => {});
   },
 
