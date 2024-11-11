@@ -17,16 +17,17 @@ const usersController = {
   
     db.Usuario.findOne(filtro)
       .then((result) => {
+        
         if (result != undefined) {
           let validarClave = bcryptjs.compareSync(form.contrasena, result.contrasena);
   
           if (validarClave) {
-            return res.redirect("/");
+            return res.render("login-realizado", {result:result})
           } else {
             return res.send("Clave incorrecta");
           }
         } else {
-          // falta
+          return res.render("login-realizado", {result:result})
         }
       })
       .catch((err) => {
