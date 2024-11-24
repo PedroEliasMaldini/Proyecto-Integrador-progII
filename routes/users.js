@@ -14,4 +14,7 @@ router.post('/register', usersController.postRegister);
 // Logout
 router.post('/logout', usersController.logout);
 
+// Perfil
+router.get('/profile', authMiddleware.ensureLoggedIn, usersController.profile);
+
 module.exports = router;

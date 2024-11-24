@@ -62,6 +62,16 @@ const usersController = {
         return res.status(500).send("Error al registrar el usuario");
       });
   },
+
+  profile: function (req, res) {
+    if (req.session.user) {
+      console.log(req.session.user)
+      return res.render('perfil', { user: req.session.user });
+    } else {
+      console.log("entro al else")
+      return res.redirect('/users/login');
+    }
+  },
   
   logout: function (req, res) {
     req.session.destroy((err) => {
