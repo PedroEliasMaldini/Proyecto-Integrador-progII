@@ -139,6 +139,10 @@ hr {
   font-size: 1em;
 }
 
+.logout {
+  padding: 0;
+}
+
 .logout:hover{
   color: #1259c3;
 }
