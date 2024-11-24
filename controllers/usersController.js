@@ -11,28 +11,36 @@ const usersController = {
   
     let filtro = {
       where: {
-        email: form.email
-      }
+        email: form.email,
+      },
     };
   
     db.Usuario.findOne(filtro)
       .then((result) => {
-        
-        if (result != undefined) {
+        if (result) {
           let validarClave = bcryptjs.compareSync(form.contrasena, result.contrasena);
   
           if (validarClave) {
-            return res.render("login-realizado", {result:result})
+            
+            req.session.user = {
+              id: result.id,
+              nombre: result.username,
+              email: result.email,
+            };
+
+            console.log(req.session.user)
+  
+            return res.redirect('/'); // Redirigir al home o donde corresponda
           } else {
-            return res.send("Clave incorrecta");
+            return res.send('Clave incorrecta');
           }
         } else {
-          return res.render("login-realizado", {result:result})
+          return res.send('Usuario no encontrado');
         }
       })
       .catch((err) => {
         console.log(err);
-        return res.status(500).send("Error al iniciar sesión");
+        return res.status(500).send('Error al iniciar sesión');
       });
   },
 
@@ -53,6 +61,16 @@ const usersController = {
         console.log(err);
         return res.status(500).send("Error al registrar el usuario");
       });
+  },
+  
+  logout: function (req, res) {
+    req.session.destroy((err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send('Error al cerrar sesión');
+      }
+      res.redirect('/');
+    });
   }
 };
 

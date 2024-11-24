@@ -18,7 +18,11 @@
 	<!-- Header -->
 	
 	<!-- /Header -->
-	<%- include('./partials/header') %>
+	<% if (user) { %>
+	   <%- include('./partials/headerLogueado'); %>
+	<% } else { %>
+	   <%- include('./partials/header'); %>
+	<% } %>
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
@@ -30,7 +34,7 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/default-image.png" alt="" class="product-detail-img">
+					<img src="/images/products/<%= result.imagen %>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
 						<%= result.descripcion %></p>
 				</article>

@@ -18,7 +18,11 @@
 
 <body>
 	<!-- Header -->
-	<%- include('./partials/header') %>
+	<% if (user) { %>
+	   <%- include('./partials/headerLogueado'); %>
+	<% } else { %>
+	   <%- include('./partials/header'); %>
+	<% } %>
 		<!-- /Header -->
 
 		<!-- Banner -->
@@ -39,7 +43,7 @@
 						<section class="product-box">
 							<a href="/detalle/<%= result[i].id %>"> <!--Aca despues hay que poner bien el detalle-->
 								<figure class="product-box_image">
-									<img src="/images/products/default-image.png" alt="cafetera moulinex">
+									<img src="/images/products/<%= result[i].imagen %>" alt="/images/products/<%= result[i].imagen %>	">
 								</figure>
 								<article class="product-box_data">
 									<h2>
@@ -47,7 +51,7 @@
 									</h2>
 									<p>Vendedor: <%= result[i].usuario.username %>
 									</p>
-									<p>valor: <%= new Intl.NumberFormat('en-US', { style: 'currency' , currency: 'USD' ,
+									<p>Valor: <%= new Intl.NumberFormat('en-US', { style: 'currency' , currency: 'USD' ,
 											minimumFractionDigits: 0 }).format(result[i].precio) %>
 									
 								</article>

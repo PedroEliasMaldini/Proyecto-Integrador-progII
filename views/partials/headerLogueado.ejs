@@ -29,32 +29,17 @@
         <nav class="main-navbar">
             <ul class="left-navbar">
                 <li><a href="/">Todos los productos</a></li>
-                <!-- solo logueado <li><a href="">Cargar productos</a></li> -->
+                <li><a href="/producto/product-add">Cargar producto</a></li>
             </ul>
 
             <ul class="right-navbar">
-            <!-- Estos li deben verse solo si el usuario está logueado 
-                <li> 
-                    Nombre del usuario <i class="fas fa-user"></i>
-                </li>
+                <li>Hola, <%= user.nombre %> <i class="fas fa-user"></i></li>
                 <li>
-                    <form action="" method="post">
+                    <form action="/users/logout" method="post">
                         <button class="logout" type="submit">
                             Cerrar sesión <i class="fas fa-sign-in-alt"></i>
                         </button>
                     </form>
-                </li>
-            -->
-                <!-- Los li con register y loguin deben ocultarse si el usuario está logueado -->
-                <li>
-                    <a href="/users/register">Creá tu cuenta <i class="far fa-address-card"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="/users/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-                </li>
-                <li>
-                    <a href="/producto/product-add">Agregar producto (hardcodeado) <i class="fas fa-sign-in-alt"></i></a>
                 </li>
             </ul>
         </nav>
