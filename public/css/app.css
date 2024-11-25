@@ -156,7 +156,7 @@ hr {
 
 
 
-/*====== Banner ======*/
+/*====== Banner. ======*/
 .banner {
   background-image: url(/images/img-home-banner.jpg);
   background-repeat: no-repeat;
@@ -532,3 +532,4 @@ textarea.form-input {
     margin: auto;
   }
 }
+
