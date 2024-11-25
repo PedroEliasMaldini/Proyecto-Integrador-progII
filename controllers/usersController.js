@@ -8,6 +8,13 @@ const usersController = {
 
   postlogin: function (req, res) {
     let form = req.body;
+
+    if (!form.contrasena || form.contrasena.trim() === "") {
+      return res.send("La contraseña no puede estar vacía o contener solo espacios.");
+    }
+    else if (!form.email || form.email.trim() === "") {
+      return res.send("El correo electronico no puede estar vacío o contener solo espacios.");
+    }
   
     let filtro = {
       where: {
@@ -70,7 +77,7 @@ const usersController = {
       })
       .catch((err) => {
         console.log(err);
-        return res.status(500).send("Error al registrar el usuario");
+        return res.status(500).send("El mail esta registrado actualmente.");
       });
   },
 

@@ -35,6 +35,20 @@ const productoController = {
 },
 addeado: function (req, res) {
   let form = req.body
+  
+  if (!form.imagen || form.imagen.trim() === "") {
+    return res.send("La imagen no puede estar vacía o contener solo espacios.");
+  }
+  else if (!form.nombreProducto || form.nombreProducto.trim() === "") {
+    return res.send("El nombre de producto no puede estar vacío o contener solo espacios.");
+  }
+  else if (!form.descripcion || form.descripcion.trim() === "") {
+    return res.send("La descripcion no puede estar vacía o contener solo espacios.");
+  }
+  else if (!form.precio || form.precio.trim() === "") {
+    return res.send("El precio no puede estar vacío o contener solo espacios.");
+  }
+
   db.Producto.create(form)
     .then((result) => {
       return res.redirect('/');
