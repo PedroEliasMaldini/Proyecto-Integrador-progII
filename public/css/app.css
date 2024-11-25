@@ -68,7 +68,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: var(--light-blue);
 }
 
 .main-header_home-link,
@@ -144,7 +144,7 @@ hr {
 }
 
 .logout:hover{
-  color: #1259c3;
+  color: #EAC926;
 }
 
 .left-navbar a,
@@ -512,7 +512,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    color: var(--yellow);
   }
 
   .left-navbar li {
