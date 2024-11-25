@@ -34,7 +34,8 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%= result.imagen %>" alt="" class="product-detail-img">
+					<img src="<%= result.imagen.startsWith('http://') || result.imagen.startsWith('https://') ? result.imagen : '/images/products/' + result.imagen %>" 
+     					alt="<%= result.imagen.startsWith('http://') || result.imagen.startsWith('https://') ? result.imagen : '/images/products/' + result.imagen %>">
 					<p class="product-detail-description">
 						<%= result.descripcion %></p>
 				</article>

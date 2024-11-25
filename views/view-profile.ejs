@@ -44,7 +44,8 @@
 								<section class="product-box">
 									<a href="/detalle/<%= productos[i].id %>">
 										<figure class="product-box_image">
-											<img src="/images/products/<%= productos[i].imagen %>" alt="<%= productos[i].imagen %>">
+											<img src="<%= productos[i].imagen.startsWith('http://') || productos[i].imagen.startsWith('https://') ? productos[i].imagen : '/images/products/' + productos[i].imagen %>" 
+     											alt="<%= productos[i].imagen.startsWith('http://') || productos[i].imagen.startsWith('https://') ? productos[i].imagen : '/images/products/' + productos[i].imagen %>">
 										</figure>
 										<article class="product-box_data">
 											<h2><%= productos[i].nombreProducto %></h2>
