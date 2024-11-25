@@ -4,22 +4,29 @@ const op = db.Sequelize.Op;
 const productoController = {
 
   search: function (req, res) {
-
     let qs = req.query.search;
     let filtro = {
       where: {
         nombreProducto: {
-          [op.like]: `%${qs}%` 
+          [op.like]: `%${qs}%`
         }
-      }
+      },
+      include: [
+        {
+          model: db.Usuario,
+          as: 'usuario',
+          attributes: ['id', 'username'],
+        },
+      ],
     };
 
     db.Producto.findAll(filtro)
       .then((result) => {
-        return res.render("search-results", { result: result, qs:qs });
+        return res.render('search-results', { result: result, qs: qs });
       })
       .catch((err) => {
         console.error(err);
+        res.status(500).send('Error en la búsqueda');
       });
   },
 
