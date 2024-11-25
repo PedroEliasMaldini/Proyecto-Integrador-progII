@@ -17,4 +17,6 @@ router.post('/logout', usersController.logout);
 // Perfil
 router.get('/profile', authMiddleware.ensureLoggedIn, usersController.profile);
 
+router.get('/view-profile/:id', usersController.viewProfile);
+
 module.exports = router;

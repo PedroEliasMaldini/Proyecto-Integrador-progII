@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+
+	<title> Mercado Liebre Argentina</title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body>
+	<% if (user) { %>
+           <%- include('./partials/headerLogueado'); %>
+        <% } else { %>
+           <%- include('./partials/header'); %>
+        <% } %>
+
+	<!-- Novedades -->
+	<main class="container">
+        <section class="profile">
+        <h2>Información de <%= usuario.username %></h2>
+        <ul>
+                <li><strong>Nombre:</strong> <%= usuario.username %></li>
+                <li><strong>Email:</strong> <%= usuario.email %></li>
+        </ul>
+        </section>
+
+  </main>
+<!-- footer -->
+<%- include('./partials/footer') %>
+<!-- /footer -->
+</body>
+
+</html>

@@ -72,6 +72,23 @@ const usersController = {
       return res.redirect('/users/login');
     }
   },
+
+  viewProfile: function (req, res) {
+    let id = req.params.id;
+
+    db.Usuario.findByPk(id)
+        .then(usuario => {
+            if (!usuario) {
+                return res.status(404).send('Usuario no encontrado');
+            }
+
+            return res.render('view-profile', { usuario });
+        })
+        .catch(error => {
+            console.error(error);
+            return res.status(500).send('Error al cargar el perfil del usuario');
+        });
+  },
   
   logout: function (req, res) {
     req.session.destroy((err) => {

@@ -49,7 +49,7 @@
 									<h2>
 										<%= result[i].nombreProducto %>
 									</h2>
-									<p>Vendedor: <%= result[i].usuario.username %>
+									<a href="/users/view-profile/<%= result[i].usuario.id %>"><p>Vendedor: <%= result[i].usuario.username %></a>
 									</p>
 									<p>Valor: <%= new Intl.NumberFormat('en-US', { style: 'currency' , currency: 'USD' ,
 											minimumFractionDigits: 0 }).format(result[i].precio) %>
