@@ -50,8 +50,8 @@
 											<a href="/detalle/<%= result[i].id %>">
 												<!--Aca despues hay que poner bien el detalle-->
 												<figure class="product-box_image">
-													<img src="/images/products/<%= result[i].imagen %>"
-														alt="<%= result[i].imagen %>">
+													<img src="<%= result[i].imagen.startsWith('http://') || result[i].imagen.startsWith('https://') ? result[i].imagen : '/images/products/' + result[i].imagen %>" 
+     													alt="<%= result[i].imagen.startsWith('http://') || result[i].imagen.startsWith('https://') ? result[i].imagen : '/images/products/' + result[i].imagen %>">
 												</figure>
 												<article class="product-box_data">
 													<h2>
